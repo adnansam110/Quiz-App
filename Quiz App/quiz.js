@@ -8,6 +8,11 @@ let shuffledQuestions, currentQuestionIndex;
 const questionElement = document.getElementById('question');
 const ansButtonElement =document.getElementById('answer-button');
 
+nextButton.addEventListener('click', () =>{
+    currentQuestionIndex++
+    nextQuestion()
+})
+
 function startGame()
 {
     startButton.classList.add('hide');
@@ -39,6 +44,7 @@ function showQuestion(question)
     });
 }
 function resetState(){
+    clearStatusClass(document.body)
     nextButton.classList.add('hide');
     while(ansButtonElement.firstChild)
     {
@@ -53,6 +59,14 @@ function selectAns(e)
     Array.from(ansButtonElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    if(shuffledQuestions.length > currentQuestionIndex+1)
+    {
+        nextButton.classList.remove('hide');
+    }
+    else{
+        startButton.innerText = 'Restart'
+        startButton.classList.remove('hide');
+    }
 }
 
 function setStatusClass(element, correct)
@@ -80,5 +94,43 @@ const question =[
             {text:'4', correct: true},
             {text:'22', correct: false}
         ]
+    },
+    {
+        question:"How many time zones are there in Russia?",
+        answer: [
+            {text:'4', correct: false},
+            {text:'22', correct: false},
+            {text:'11', correct: true},
+            {text:'5', correct: false}
+        ]
+    },
+    {
+        question:"What’s the national flower of Japan? ",
+        answer: [
+            {text:'Rose', correct: false},
+            {text:'Cherry blossom', correct: true},
+            {text:'Lily', correct: false},
+            {text:'Sun Flower', correct: false}
+        ]
+    },
+    {
+        question:"How many stripes are there on the US flag?",
+        answer: [
+            {text:'11', correct: false},
+            {text:'15', correct: false},
+            {text:'10', correct: false},
+            {text:'13', correct: true}
+        ]
+    },
+    {
+        question:"How many days does it take for the Earth to orbit the Sun?",
+        answer: [
+            {text:'300', correct: false},
+            {text:'360', correct: false},
+            {text:'390', correct: false},
+            {text:'365', correct: true}
+        ]
     }
+    
+
 ]
