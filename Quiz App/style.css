@@ -52,11 +52,11 @@ body.wrong{
 .btn:hover{
     border-color: black;
 }
-.btn-correct{
+.btn.correct{
     --hue: var(--hue-correct);
     color: black;
 }
-.btn-wrong{
+.btn.wrong{
     --hue: var(--hue-wrong);
 }
 .start-btn, .next-btn{
